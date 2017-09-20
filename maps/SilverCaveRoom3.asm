@@ -27,6 +27,21 @@ RedScript_0x18c603:
 	closetext
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
+	pause 15
+	special Special_FadeInQuickly
+	pause 30
+	winlosstext UnknownText_0x18c63c, UnknownText_0x18c63c
+	loadtrainer RED, 2
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	special Special_FadeOutMusic
+	opentext
+	writetext UnknownText_0x18c63f
+	waitbutton
+	closetext
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
 	disappear SILVERCAVEROOM3_RED
 	pause 15
 	special Special_FadeInQuickly
