@@ -28,13 +28,16 @@ text/common_text.o \
 gfx/pics.o
 
 
-roms := crystal-speedchoice.gbc
+java_obj := Functions.class MakeRandomizerINIFromSymFileGen2.class
+
+
+roms := crystal-speedchoice.gbc gen2_offsets.ini
 
 all: $(roms)
 crystal: crystal-speedchoice.gbc
 
 clean:
-	rm -f $(roms) $(crystal_obj) $(crystal11_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+	rm -f $(roms) $(crystal_obj) $(crystal11_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) $(java_obj)
 
 compare: crystal-speedchoice.gbc
 	@$(MD5) roms.md5
@@ -48,9 +51,12 @@ compare: crystal-speedchoice.gbc
 crystal-speedchoice.gbc: $(crystal_obj)
 	rgblink -n crystal-speedchoice.sym -m crystal-speedchoice.map -o $@ $^
 	rgbfix -Cjv -i KAPB -k 01 -l 0x33 -m 0x10 -p 0 -n 6 -r 3 -t PM_CRYSTAL $@
-	javac MakeRandomizerINIFromSymFileGen2.java
+
+%.class: %.java
+	javac $<
+
+gen2_offsets.ini: crystal-speedchoice.gbc $(java_obj)
 	java MakeRandomizerINIFromSymFileGen2 > gen2_offsets.ini
-	rm *.class
 
 %.png: ;
 %.2bpp: %.png ; $(gfx) 2bpp $<
