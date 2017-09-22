@@ -5058,10 +5058,6 @@ BattleCommand_SleepTarget: ; 35e5c
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .dont_fail
 
-	call BattleRandom
-	cp $40 ; 25%
-	ret c
-
 .dont_fail
 	xor a
 	ret
@@ -5157,10 +5153,6 @@ BattleCommand_Poison: ; 35f2c
 	ld a, [PlayerSubStatus5]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .mimic_random
-
-	call BattleRandom
-	cp $40 ; 25% chance AI fails
-	jr c, .failed
 
 .mimic_random
 	call CheckSubstituteOpp
@@ -5860,10 +5852,6 @@ BattleCommand_StatDown: ; 362e3
 	call GetBattleVar
 	cp EFFECT_ACCURACY_DOWN_HIT
 	jr z, .DidntMiss
-
-	call BattleRandom
-	cp $40
-	jr c, .Failed
 
 .DidntMiss
 	call CheckSubstituteOpp
@@ -7740,10 +7728,6 @@ BattleCommand_Paralyze: ; 36dc7
 	ld a, [PlayerSubStatus5]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .dont_sample_failure
-
-	call BattleRandom
-	cp 1 + 25 percent
-	jr c, .failed
 
 .dont_sample_failure
 	ld a, BATTLE_VARS_STATUS_OPP
