@@ -47,7 +47,10 @@ compare: crystal-speedchoice.gbc
 
 crystal-speedchoice.gbc: $(crystal_obj)
 	rgblink -n crystal-speedchoice.sym -m crystal-speedchoice.map -o $@ $^
-	rgbfix -Cjv -i KAPB -k 01 -l 0x33 -m 0x10 -p 0 -n 3 -r 3 -t PM_CRYSTAL $@
+	rgbfix -Cjv -i KAPB -k 01 -l 0x33 -m 0x10 -p 0 -n 6 -r 3 -t PM_CRYSTAL $@
+	javac MakeRandomizerINIFromSymFileGen2.java
+	java MakeRandomizerINIFromSymFileGen2 > gen2_offsets.ini
+	rm *.class
 
 %.png: ;
 %.2bpp: %.png ; $(gfx) 2bpp $<

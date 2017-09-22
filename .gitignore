@@ -8,6 +8,7 @@
 
 # no binaries
 *.exe
+*.class
 
 # roms
 *.gbc
@@ -22,6 +23,9 @@
 # rgbds extras
 *.map
 *.sym
+
+# ini offset file
+*.ini
 
 # compare.sh
 baserom.txt
