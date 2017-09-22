@@ -169,8 +169,8 @@ AI_TryItem: ; 38105
 	or b
 	ret z
 
-	call .IsHighestLevel
-	ret nc
+	; call .IsHighestLevel
+	; ret nc
 
 	ld a, [TrainerClass]
 	dec a

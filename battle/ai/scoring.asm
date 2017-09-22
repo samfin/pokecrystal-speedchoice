@@ -939,7 +939,7 @@ AI_Smart_Haze: ; 389f5
 	dec c
 	jr z, .asm_38a1b
 	ld a, [hli]
-	cp $a
+	cp $9
 	jr c, .asm_38a0a
 
 .asm_38a12
