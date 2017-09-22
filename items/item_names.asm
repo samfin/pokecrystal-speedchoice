@@ -41,7 +41,7 @@
 	db "GUARD SPEC.@"
 	db "SUPER REPEL@"
 	db "MAX REPEL@"
-	db "DIRE HIT@"
+	db "X SPDEF@"
 	db "TERU-SAMA@"
 	db "FRESH WATER@"
 	db "SODA POP@"

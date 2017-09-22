@@ -2352,20 +2352,11 @@ GuardSpec: ; f4ab
 	jp UseItemText
 ; f4b8
 
-
-DireHit: ; f4b8
-	ld hl, PlayerSubStatus4
-	bit SUBSTATUS_FOCUS_ENERGY, [hl]
-	jp nz, WontHaveAnyEffect_NotUsedMessage
-	set SUBSTATUS_FOCUS_ENERGY, [hl]
-	jp UseItemText
-; f4c5
-
-
 XAttack:
 XDefend:
 XSpeed:
-XSpecial: ; f4c5
+XSpecial:
+DireHit: ; f4c5
 	call UseItemText
 
 	ld a, [CurItem]
@@ -2404,6 +2395,7 @@ endr
 	db X_DEFEND,  DEFENSE
 	db X_SPEED,   SPEED
 	db X_SPECIAL, SP_ATTACK
+	db DIRE_HIT,  SP_DEFENSE
 ; f50c
 
 
