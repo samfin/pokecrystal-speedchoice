@@ -1355,6 +1355,9 @@ BattleCommand_Stab: ; 346d2
 	cp STRUGGLE
 	ret z
 
+	cp EXPLOSION
+	ret z
+
 	ld hl, BattleMonType1
 	ld a, [hli]
 	ld b, a
