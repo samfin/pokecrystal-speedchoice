@@ -480,18 +480,19 @@ MartAzaleaBetter: ; 16106
 ; 16111
 
 MartGoldenrod4FBetter: ; 16134
-	db 11 ; # items
+	db 12 ; # items
 	db FIRE_STONE
 	db WATER_STONE
 	db LEAF_STONE
 	db THUNDERSTONE
 	db SUN_STONE
 	db MOON_STONE
-	db PROTEIN
-	db IRON
-	db CARBOS
-	db CALCIUM
-	db HP_UP
+	db LEFTOVERS
+	db SCOPE_LENS
+	db BERSERK_GENE
+	db FOCUS_BAND
+	db QUICK_CLAW
+	db KINGS_ROCK
 	db $ff
 
 DefaultMart: ; 16214
