@@ -720,6 +720,52 @@ Rival1Group:
 PokemonProfGroup:
 ; ================================
 ; ================
+
+	; OAK (1)
+	db "OAK@"
+	db 1 ; moves
+
+	; party
+
+	db 49, SNORLAX
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+
+	db 50, SNORLAX
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+
+	db 51, SNORLAX
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+
+	db 52, SNORLAX
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+
+	db 53, SNORLAX
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+
+	db 55, SNORLAX
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+		db EXPLOSION
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8626,6 +8672,52 @@ RedGroup:
 		db FIRE_SPIN
 
 	db 77, BLASTOISE
+		db RAIN_DANCE
+		db SURF
+		db BLIZZARD
+		db WHIRLPOOL
+
+	db $ff ; end
+
+; ================
+
+	; RED (2)
+	db "RED@"
+	db 1 ; moves
+
+	; party
+
+	db 100, PIKACHU
+		db CHARM
+		db QUICK_ATTACK
+		db THUNDERBOLT
+		db THUNDER
+
+	db 100, ESPEON
+		db MUD_SLAP
+		db REFLECT
+		db SWIFT
+		db PSYCHIC_M
+
+	db 100, SNORLAX
+		db AMNESIA
+		db SNORE
+		db REST
+		db BODY_SLAM
+
+	db 100, VENUSAUR
+		db SUNNY_DAY
+		db GIGA_DRAIN
+		db SYNTHESIS
+		db SOLARBEAM
+
+	db 100, CHARIZARD
+		db FLAMETHROWER
+		db WING_ATTACK
+		db SLASH
+		db FIRE_SPIN
+
+	db 100, BLASTOISE
 		db RAIN_DANCE
 		db SURF
 		db BLIZZARD

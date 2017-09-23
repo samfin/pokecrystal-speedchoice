@@ -1738,7 +1738,10 @@ BattleCommand_CheckHit: ; 34d32
 	and a
 	jr z, .BrightPowder
 	ld a, [wEnemyMoveStruct + MOVE_ACC]
+	srl a
+	add a, $80
 	ld b, a
+
 
 .BrightPowder
 	push bc
