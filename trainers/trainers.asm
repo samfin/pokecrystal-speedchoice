@@ -6253,6 +6253,52 @@ HikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; HIKER (23)
+	db "MOTHERFUCK@"
+	db 1 ; moves
+
+	; party
+
+	db 50, GRAVELER
+		db MAGNITUDE
+		db SELFDESTRUCT
+		db DEFENSE_CURL
+		db ROLLOUT
+
+	db 50, GOLEM
+		db MAGNITUDE
+		db SELFDESTRUCT
+		db DEFENSE_CURL
+		db ROLLOUT
+
+	db 50, MACHOKE
+		db KARATE_CHOP
+		db VITAL_THROW
+		db HEADBUTT
+		db DIG
+
+	db 50, GRAVELER
+		db MAGNITUDE
+		db SELFDESTRUCT
+		db DEFENSE_CURL
+		db ROLLOUT
+
+	db 50, GOLEM
+		db MAGNITUDE
+		db SELFDESTRUCT
+		db DEFENSE_CURL
+		db ROLLOUT
+
+	db 50, MACHOKE
+		db KARATE_CHOP
+		db VITAL_THROW
+		db HEADBUTT
+		db DIG
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

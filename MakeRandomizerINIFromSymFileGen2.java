@@ -71,7 +71,7 @@ public class MakeRandomizerINIFromSymFileGen2 {
         System.out.println("TrainerClassAmount=0x43");
         printSymbol("TrainerDataTableOffset", "TrainerGroups");
         System.out
-                .println("TrainerDataClassCounts=[1, 1, 1, 1, 1, 1, 1, 1, 15, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 5, 1, 14, 24, 19, 17, 1, 20, 21, 17, 15, 31, 5, 2, 3, 1, 19, 25, 21, 19, 13, 14, 6, 2, 22, 9, 1, 3, 8, 6, 9, 4, 12, 26, 22, 2, 12, 7, 3, 14, 6, 10, 6, 2, 1, 2, 5, 1]");
+                .println("TrainerDataClassCounts=[1, 1, 1, 1, 1, 1, 1, 1, 15, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 5, 1, 14, 24, 19, 17, 1, 20, 21, 17, 15, 31, 5, 2, 3, 1, 19, 25, 21, 19, 13, 14, 6, 2, 23, 9, 1, 3, 8, 6, 9, 4, 12, 26, 22, 2, 12, 7, 3, 14, 6, 10, 6, 2, 1, 2, 5, 1]");
         printSymbol("TMMovesOffset", "TMHMMoves");
         printSymbol("TrainerClassNamesOffset", "TrainerClassNames");
         

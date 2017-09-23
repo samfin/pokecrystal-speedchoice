@@ -41,9 +41,14 @@ UnknownScript_0x1a088c:
 	opentext
 	writetext UnknownText_0x1a0a6b
 	buttonsound
-	writetext UnknownText_0x1a0a71
+	writetext HikerWelcomeText
+	winlosstext UnknownText_0x1a0a6b, 0
+	loadtrainer HIKER, 23
+	encountermusic
 	waitbutton
 	closetext
+	startbattle
+	reloadmapafterbattle
 	dotrigger $1
 	end
 
@@ -320,6 +325,18 @@ MovementData_0x1a0a69:
 
 UnknownText_0x1a0a6b:
 	text "Hey!"
+	done
+
+HikerWelcomeText:
+	text "Do you know what"
+	line "you just did?"
+
+	para "You've taken your"
+	line "first step into"
+	cont "KANTO."
+
+	para "Let me welcome"
+	line "you personally!"
 	done
 
 UnknownText_0x1a0a71:
