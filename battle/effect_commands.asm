@@ -2891,11 +2891,26 @@ PlayerAttackDamage: ; 352e2
 .lightball
 ; Note: Returns player special attack at hl in hl.
 	call LightBallBoost
+
+	; Cut special damage in half for fistfight battle type
+	ld a, [BattleType]
+	cp BATTLETYPE_FISTFIGHT
+	jp nz, .done
+	srl h
+	rr l
+
 	jr .done
 
 .thickclub
 ; Note: Returns player attack at hl in hl.
 	call ThickClubBoost
+
+	; Cut physical damage in half for telekinesis battle type
+	ld a, [BattleType]
+	cp BATTLETYPE_TELEKINESIS
+	jp nz, .done
+	srl h
+	rr l
 
 .done
 	call TruncateHL_BC
