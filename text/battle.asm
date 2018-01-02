@@ -42,6 +42,42 @@ WantsToBattleText:: ; 0x807a9
 	text "<ENEMY>"
 	line "wants to battle!"
 	prompt
+
+AttractPreText:
+	text "<USER>"
+	line "used ATTRACT!"
+	prompt
+
+FistFightEffectStartText:
+	text "Special attacks"
+	line "are weakened!"
+	prompt
+
+WinterEffectStartText:
+	text "A cold wind"
+	line "begins to blow!"
+	prompt
+
+TelekinesisEffectStartText:
+	text "Physical attacks"
+	line "are weakened!"
+	prompt
+
+DisguiseEffectStartText:
+	text "<ENEMY>"
+	line "prepared a decoy!"
+	prompt
+
+BlaineEffectStartText: ; 0x807a9
+	text "Ha! You'd better"
+	line "have BURN HEAL!"
+	prompt
+
+PressureStartText: ; 0x807a9
+	text "<ENEMY>"
+	line "is radiating an"
+	cont "intense pressure!"
+	prompt
 ; 0x807bd
 
 BattleText_WildFled: ; 0x807bd
@@ -443,6 +479,13 @@ FlinchedText: ; 0x80d1a
 MustRechargeText: ; 0x80d27
 	text "<USER>"
 	line "must recharge!"
+	prompt
+; 0x80d39
+
+MustPressureRechargeText: ; 0x80d27
+	text "<USER>"
+	line "can't handle the"
+	cont "pressure!"
 	prompt
 ; 0x80d39
 

@@ -92,6 +92,8 @@ DoBattle: ; 3c000
 	call SendOutPlayerMon
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
+	call SetEnemyTurn
+	call SpecialTrainerStartOfBattle
 	call SetPlayerTurn
 	call SpikesDamage
 	ld a, [wLinkMode]
@@ -591,7 +593,7 @@ CheckContestBattleOver: ; 3c3f5
 
 CheckPlayerLockedIn: ; 3c410
 	ld a, [PlayerSubStatus4]
-	and 1 << SUBSTATUS_RECHARGE
+	and 1 << SUBSTATUS_RECHARGE | 1 << SUBSTATUS_PRESSURE_RECHARGE
 	jp nz, .quit
 
 	ld hl, EnemySubStatus3
@@ -2448,6 +2450,7 @@ EnemyPartyMonEntrance: ; 3cf78
 	and a
 	jr nz, .set
 	call EnemySwitch
+	call SpecialTrainerEffect
 	jr .done_switch
 
 .set
@@ -4353,6 +4356,22 @@ BreakAttraction: ; 3dc18
 	ret
 ; 3dc23
 
+SpecialTrainerStartOfBattle:
+	push af
+	push hl
+	callba SpecialTrainerStartOfBattleFar
+	pop hl
+	pop af
+	ret
+
+SpecialTrainerEffect: ; On enemy Switch in
+	push af
+	push hl
+	callba SpecialTrainerEffectFar
+	pop hl
+	pop af
+	ret
+
 SpikesDamage: ; 3dc23
 	ld hl, PlayerScreens
 	ld de, BattleMonType
@@ -6249,7 +6268,7 @@ ResetVarsForSubstatusRage: ; 3e8c1
 
 CheckSubstatus_RechargeChargedRampageBideRollout: ; 3e8d1
 	ld a, [EnemySubStatus4]
-	and 1 << SUBSTATUS_RECHARGE
+	and 1 << SUBSTATUS_RECHARGE | 1 << SUBSTATUS_PRESSURE_RECHARGE
 	ret nz
 
 	ld hl, EnemySubStatus3

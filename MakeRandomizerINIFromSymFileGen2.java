@@ -11,7 +11,7 @@ public class MakeRandomizerINIFromSymFileGen2 {
     private static Map<String, Integer> romSymbols = new TreeMap<String, Integer>();
     private static byte[] rom;
     
-    private static String pokecrystalPath = "/home/sam/pokecrystal-speedchoice/";
+    private static String pokecrystalPath = "/home/sam/Desktop/ubuntu/pokecrystal-speedchoice/";
 
     public static void main(String[] args) throws IOException {
 

@@ -160,6 +160,17 @@ CheckPlayerTurn:
 
 .no_recharge
 
+	ld hl, PlayerSubStatus4
+	bit SUBSTATUS_PRESSURE_RECHARGE, [hl]
+	jr z, .no_pressure_recharge
+
+	res SUBSTATUS_PRESSURE_RECHARGE, [hl]
+	ld hl, MustPressureRechargeText
+	call StdBattleTextBox
+	call CantMove
+	jp EndTurn
+
+.no_pressure_recharge
 
 	ld hl, BattleMonStatus
 	ld a, [hl]

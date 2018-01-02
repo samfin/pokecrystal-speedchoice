@@ -220,3 +220,147 @@ AIScoringPointers: ; 441af
 	dw AI_None
 	dw AI_None
 ; 441cf
+
+
+; ====================================================================================================
+; too lazy to make a new file
+
+
+SpecialTrainerStartOfBattleFar:
+	ld a, [BattleType]
+	cp BATTLETYPE_FISTFIGHT
+	jp z, .fistfight
+	cp BATTLETYPE_TELEKINESIS
+	jp z, .telekinesis
+	cp BATTLETYPE_WINTER
+	jp z, .winter
+	cp BATTLETYPE_DISGUISE
+	jp z, .disguise
+	cp BATTLETYPE_PRESSURE
+	jp z, .pressure
+	cp BATTLETYPE_BURNHEAL
+	jp z, .blaine
+	cp BATTLETYPE_ATTRACT
+	jp z, .attract
+
+	jp .done
+
+.attract
+	jp .done
+
+.fistfight
+	ld hl, FistFightEffectStartText
+	call StdBattleTextBox
+	jp .done
+
+.telekinesis
+	ld hl, TelekinesisEffectStartText
+	call StdBattleTextBox
+	jp .done
+
+.winter
+	ld hl, WinterEffectStartText
+	call StdBattleTextBox
+	jp .done
+
+.blaine
+	ld hl, BlaineEffectStartText
+	call StdBattleTextBox
+	jp .done
+
+.pressure
+	ld hl, PressureStartText
+	call StdBattleTextBox
+	jp .done
+
+.disguise
+	ld hl, DisguiseEffectStartText
+	call StdBattleTextBox
+	jp .done
+
+.done
+	call SpecialTrainerEffectFar
+	ret
+
+SpecialTrainerEffectFar: ; On enemy Switch in
+	ld a, [BattleType]
+	cp BATTLETYPE_WINTER
+	jp z, .winter
+	cp BATTLETYPE_DISGUISE
+	jp z, .disguise
+	cp BATTLETYPE_ATTRACT
+	jp z, .attract
+	cp BATTLETYPE_PRESSURE
+	jp z, .pressure
+	cp BATTLETYPE_BURNHEAL
+	jp z, .blaine
+
+	ret
+
+.winter
+	call WinterEffect
+	ret
+
+.attract
+	call AttractEffect
+	ret
+
+.blaine
+	call BlaineEffect
+	ret
+
+.pressure
+	call RedEffect
+	ret
+
+.disguise
+	call DisguiseEffect
+	ret
+
+WinterEffect:
+	callba BattleCommand_MoveDelay
+	callba BattleCommand_ResetStats
+	ret
+
+AttractEffect:
+	ld hl, AttractPreText
+	call StdBattleTextBox
+
+	callba BattleCommand_MoveDelay
+
+	xor a
+	ld [AttackMissed], a
+	callba BattleCommand_Attract
+	ret
+
+DisguiseEffect:
+	callba BattleCommand_Substitute
+	ret
+
+RedEffect:
+	ld a, BATTLE_VARS_SUBSTATUS4_OPP
+	call GetBattleVarAddr
+	set SUBSTATUS_PRESSURE_RECHARGE, [hl]
+	ret
+
+BlaineEffect:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	and a
+	ret nz
+
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	set BRN, [hl]
+	call UpdateOpponentInParty
+	callba ApplyBrnEffectOnAttack
+	ld de, ANIM_BRN
+	call SetPlayerTurn
+	callba Call_PlayBattleAnim_OnlyIfVisible
+	call SetEnemyTurn
+
+	ld hl, WasBurnedText
+	call StdBattleTextBox
+
+	callba UseHeldStatusHealingItem
+	ret

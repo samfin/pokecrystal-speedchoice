@@ -19,6 +19,7 @@ BlueScript_0x9aa26:
 	closetext
 	winlosstext LeaderBlueWinText, 0
 	loadtrainer BLUE, 1
+	writecode VAR_BATTLETYPE, BATTLETYPE_TELEKINESIS
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLUE
