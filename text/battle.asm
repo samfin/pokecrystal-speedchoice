@@ -48,6 +48,12 @@ AttractPreText:
 	line "used ATTRACT!"
 	prompt
 
+TrickRoomEffectStartText:
+	text "<ENEMY>"
+	line "twisted the"
+	cont "dimensions!"
+	prompt
+
 FistFightEffectStartText:
 	text "Special attacks"
 	line "are weakened!"

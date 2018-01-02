@@ -543,6 +543,14 @@ DetermineMoveOrder: ; 3c314
 .speed_check
 	ld de, BattleMonSpeed
 	ld hl, EnemyMonSpeed
+
+	ld a, [BattleType]
+	cp BATTLETYPE_TRICKROOM
+	jp nz, .skiptrickroom
+	ld de, EnemyMonSpeed
+	ld hl, BattleMonSpeed
+
+.skiptrickroom
 	ld c, 2
 	call StringCmp
 	jr z, .speed_tie

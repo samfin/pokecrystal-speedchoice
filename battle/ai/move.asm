@@ -242,10 +242,17 @@ SpecialTrainerStartOfBattleFar:
 	jp z, .blaine
 	cp BATTLETYPE_ATTRACT
 	jp z, .attract
+	cp BATTLETYPE_TRICKROOM
+	jp z, .trickroom
 
 	jp .done
 
 .attract
+	jp .done
+
+.trickroom
+	ld hl, TrickRoomEffectStartText
+	call StdBattleTextBox
 	jp .done
 
 .fistfight

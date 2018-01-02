@@ -19,7 +19,7 @@ BlueScript_0x9aa26:
 	closetext
 	winlosstext LeaderBlueWinText, 0
 	loadtrainer BLUE, 1
-	writecode VAR_BATTLETYPE, BATTLETYPE_FISTFIGHT
+	writecode VAR_BATTLETYPE, BATTLETYPE_BURNHEAL
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLUE
