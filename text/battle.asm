@@ -43,35 +43,73 @@ WantsToBattleText:: ; 0x807a9
 	line "wants to battle!"
 	prompt
 
+AttractEffectStartText:
+	text "Aren't I the"
+	line "cutest?"
+	prompt
+
 AttractPreText:
 	text "<USER>"
 	line "used ATTRACT!"
 	prompt
 
-TrickRoomEffectStartText:
+TrickRoomEffectStartText1:
+	text "I will show you"
+	line "my psychic powers!"
+	prompt
+
+TrickRoomEffectStartText2:
 	text "<ENEMY>"
 	line "twisted the"
 	cont "dimensions!"
 	prompt
 
-FistFightEffectStartText:
+FistFightEffectStartText1:
+	text "WAHAHAH! Let us"
+	line "fight with our"
+	cont "fists!"
+	prompt
+
+FistFightEffectStartText2:
 	text "Special attacks"
 	line "are weakened!"
 	prompt
 
-WinterEffectStartText:
-	text "A cold wind"
-	line "begins to blow!"
+SandstormEffectStartText:
+	text "Let's go!"
 	prompt
 
-TelekinesisEffectStartText:
+WinterEffectStartText:
+	text "Let me demonstrate"
+	line "the harshness of"
+	cont "winter!"
+	prompt
+
+WinterEffectText:
+	text "A cold wind blows"
+	line "through you..."
+	prompt
+
+TelekinesisEffectStartText1:
+	text "Shall we duel"
+	line "with our minds?"
+	prompt
+
+TelekinesisEffectStartText2:
 	text "Physical attacks"
 	line "are weakened!"
 	prompt
 
 DisguiseEffectStartText:
-	text "<ENEMY>"
-	line "prepared a decoy!"
+	text "Fwahahaha! Can you"
+	line "see through my"
+	cont "disguise?"
+	prompt
+
+JanineEffectStartText:
+	text "Fufufu... Can you"
+	line "see through my"
+	cont "disguise?"
 	prompt
 
 BlaineEffectStartText: ; 0x807a9

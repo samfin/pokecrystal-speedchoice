@@ -234,6 +234,8 @@ SpecialTrainerStartOfBattleFar:
 	jp z, .telekinesis
 	cp BATTLETYPE_WINTER
 	jp z, .winter
+	cp BATTLETYPE_JANINE_DISGUISE
+	jp z, .janine_disguise
 	cp BATTLETYPE_DISGUISE
 	jp z, .disguise
 	cp BATTLETYPE_PRESSURE
@@ -244,30 +246,48 @@ SpecialTrainerStartOfBattleFar:
 	jp z, .attract
 	cp BATTLETYPE_TRICKROOM
 	jp z, .trickroom
+	cp BATTLETYPE_SANDSTORM
+	jp z, .sandstorm
 
 	jp .done
 
 .attract
+	ld hl, AttractEffectStartText
+	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
 	jp .done
 
 .trickroom
-	ld hl, TrickRoomEffectStartText
+	ld hl, TrickRoomEffectStartText1
 	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
+	ld hl, TrickRoomEffectStartText2
+	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
 	jp .done
 
 .fistfight
-	ld hl, FistFightEffectStartText
+	ld hl, FistFightEffectStartText1
 	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
+	ld hl, FistFightEffectStartText2
+	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
 	jp .done
 
 .telekinesis
-	ld hl, TelekinesisEffectStartText
+	ld hl, TelekinesisEffectStartText1
 	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
+	ld hl, TelekinesisEffectStartText2
+	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
 	jp .done
 
 .winter
 	ld hl, WinterEffectStartText
 	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
 	jp .done
 
 .blaine
@@ -278,11 +298,23 @@ SpecialTrainerStartOfBattleFar:
 .pressure
 	ld hl, PressureStartText
 	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
 	jp .done
 
 .disguise
 	ld hl, DisguiseEffectStartText
 	call StdBattleTextBox
+	jp .done
+
+.janine_disguise
+	ld hl, JanineEffectStartText
+	call StdBattleTextBox
+	jp .done
+
+.sandstorm
+	ld hl, SandstormEffectStartText
+	call StdBattleTextBox
+	callba BattleCommand_MoveDelay
 	jp .done
 
 .done
@@ -295,12 +327,16 @@ SpecialTrainerEffectFar: ; On enemy Switch in
 	jp z, .winter
 	cp BATTLETYPE_DISGUISE
 	jp z, .disguise
+	cp BATTLETYPE_JANINE_DISGUISE
+	jp z, .disguise
 	cp BATTLETYPE_ATTRACT
 	jp z, .attract
 	cp BATTLETYPE_PRESSURE
 	jp z, .pressure
 	cp BATTLETYPE_BURNHEAL
 	jp z, .blaine
+	cp BATTLETYPE_SANDSTORM
+	jp z, .sandstorm
 
 	ret
 
@@ -324,7 +360,13 @@ SpecialTrainerEffectFar: ; On enemy Switch in
 	call DisguiseEffect
 	ret
 
+.sandstorm
+	call SandstormEffect
+	ret
+
 WinterEffect:
+	ld hl, WinterEffectText
+	call StdBattleTextBox
 	callba BattleCommand_MoveDelay
 	callba BattleCommand_ResetStats
 	ret
@@ -370,4 +412,17 @@ BlaineEffect:
 	call StdBattleTextBox
 
 	callba UseHeldStatusHealingItem
+	ret
+
+SandstormEffect:
+	ld a, [Weather]
+	cp WEATHER_SANDSTORM
+	ret z
+
+	ld a, WEATHER_SANDSTORM
+	ld [Weather], a
+	ld a, 255
+	ld [WeatherCount], a
+	ld hl, SandstormBrewedText
+	call StdBattleTextBox
 	ret
